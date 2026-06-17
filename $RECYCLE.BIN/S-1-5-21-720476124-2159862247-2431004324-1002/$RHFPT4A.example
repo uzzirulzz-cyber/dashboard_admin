@@ -1,0 +1,3 @@
+# Local development — copy to .env.local and fill in
+VITE_API_URL=http://localhost:3000
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_51TMvD1K7C5jIjluK...

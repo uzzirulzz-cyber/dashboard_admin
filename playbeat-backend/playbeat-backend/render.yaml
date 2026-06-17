@@ -1,0 +1,87 @@
+services:
+  - type: web
+    name: playbeat-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: FRONTEND_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_ACCOUNT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: PAYPAL_MODE
+        value: production
+      - key: ALFAPAY_CHANNEL_ID
+        value: "1002"
+      - key: ALFAPAY_MERCHANT_ID
+        value: "197"
+      - key: ALFAPAY_STORE_ID
+        value: "000001"
+      - key: ALFAPAY_MERCHANT_USERNAME
+        sync: false
+      - key: ALFAPAY_MERCHANT_PASSWORD
+        sync: false
+      - key: ALFAPAY_MERCHANT_HASH
+        sync: false
+      - key: ALFAPAY_KEY_1
+        sync: false
+      - key: ALFAPAY_KEY_2
+        sync: false
+      - key: MEEZAN_IBAN
+        value: PK86MEZN0015040115102971
+      - key: MEEZAN_ACCOUNT_TITLE
+        value: PLAYBEAT DIGITAL PRIVATE LIMITED
+      - key: JAZZCASH_MERCHANTID
+        sync: false
+      - key: JAZZCASH_PASSWORD
+        sync: false
+      - key: JAZZCASH_HASHKEY
+        sync: false
+      - key: JAZZCASH_MOBILE
+        value: "03318333368"
+      - key: JAZZCASH_PAYMENTMODE
+        value: production
+      - key: JAZZCASH_TIMEZONE
+        value: Asia/Karachi
+      - key: EASYPAISA_STORE_ID
+        sync: false
+      - key: EASYPAISA_HASH_KEY
+        sync: false
+      - key: NOWPAYMENTS_API_KEY
+        sync: false
+      - key: NOWPAYMENTS_IPN_SECRET
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: FROM_EMAIL
+        value: noreply@playbeat.digital
+      - key: FROM_NAME
+        value: PlayBeat Digital

@@ -1,0 +1,11 @@
+PORT=5000
+
+MONGODB_URI=MONGODB_URI=mongodb+srv://admin:NYMmKxjjbJ5GEaF@playbeatdep.c1rxiyu.mongodb.net/?appName=playbeatdep
+
+FRONTEND_URL=https://advance-new-git-main-crdbixx-7538s-projects.vercel.app/
+
+JWT_SECRET=PlayBeatJWT_SuperSecret_2025
+
+ADMIN_USERNAME=admin
+
+ADMIN_PASSWORD=playbeat123

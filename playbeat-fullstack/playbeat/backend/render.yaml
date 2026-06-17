@@ -1,0 +1,54 @@
+services:
+  - type: web
+    name: playbeat-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_ACCOUNT_ID
+        sync: false
+      - key: ALFAPAY_MERCHANT_ID
+        sync: false
+      - key: ALFAPAY_STORE_ID
+        sync: false
+      - key: ALFAPAY_CHANNEL_ID
+        sync: false
+      - key: ALFAPAY_API_URL
+        sync: false
+      - key: ALFAPAY_RETURN_URL
+        sync: false
+      - key: ALFAPAY_KEY_1
+        sync: false
+      - key: ALFAPAY_KEY_2
+        sync: false
+      - key: MEZPAY_USERNAME
+        sync: false
+      - key: MEZPAY_PASSWORD
+        sync: false
+      - key: MEEZAN_IBAN
+        sync: false
+      - key: JAZZCASH_MERCHANTID
+        sync: false
+      - key: JAZZCASH_PASSWORD
+        sync: false
+      - key: JAZZCASH_HASHKEY
+        sync: false
+      - key: JAZZCASH_RETURNURL
+        sync: false
+      - key: FRONTEND_URL
+        value: https://playbeat.digital
+      - key: API_URL
+        value: https://api.playbeat.digital

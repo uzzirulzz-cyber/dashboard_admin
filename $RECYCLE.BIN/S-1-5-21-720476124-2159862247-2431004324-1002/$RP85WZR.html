@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayBeat Digital — Pakistan's #1 Digital Marketplace</title>
+  <meta name="description" content="Buy games, gift cards, software, AI tools, subscriptions and top-ups at PKR prices. Instant delivery. JazzCash · Stripe · Alfalah · Meezan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Orbitron:wght@400;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  
+<style>
+:root{
+--navy-900:#040818;--navy-800:#081028;--navy-700:#0d1738;
+--silver-100:#f5f7fa;--silver-200:#d8e0ea;--silver-300:#b8c4d6;--silver-400:#92a3bb;
+--silver-glow:#eef4ff;
+--yellow-300:#f5c842;--yellow-400:#f8d25d;--yellow-600:#d9a81d;
+--text-primary:#fff;--text-secondary:#b8c4d6;--text-muted:#7d8ca3;
+--card-bg:rgba(10,18,45,.92);
+--border-subtle:rgba(184,196,214,.12);
+--border-mid:rgba(184,196,214,.24);
+--border-bright:rgba(184,196,214,.4);
+--ease-smooth:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:'DM Sans',sans-serif;
+background:
+radial-gradient(circle at top right,rgba(220,55,55,.07),transparent 35%),
+radial-gradient(circle at bottom left,rgba(245,200,66,.03),transparent 40%),
+linear-gradient(160deg,var(--navy-900),var(--navy-800),var(--navy-700));
+color:var(--text-primary);
+}
+img{max-width:100%}
+a{text-decoration:none}
+</style>
+
+  <style>
+    /* ── INDEX-ONLY STYLES ──────────────────────────────── */
+
+    /* ── HERO SPLASH ────────────────────────────────────── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 60% at 90% 0%, rgba(220,55,55,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 5% 100%, rgba(245,200,66,0.05) 0%, transparent 55%),
+        linear-gradient(160deg, rgba(6,12,35,1) 0%, rgba(4,8,24,1) 100%);
+    }
+
+    /* Animated grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(160,180,220,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(160,180,220,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+      pointer-events: none;
+    }
+
+    /* Glowing orb */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(200,212,245,0.04) 0%,
+        rgba(200,212,245,0.015) 40%,
+        transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Pre-headline eyebrow */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--yellow-300);
+      border: 1px solid rgba(245,200,66,0.25);
+      background: rgba(245,200,66,0.05);
+      padding: 6px 16px; border-radius: 3px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin: 0 0 1.5rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #92a3bb 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0 0 2.5rem;
+      max-width: 520px;
+    }
+
+    /* Search bar */
+    .hero-search {
+      display: flex; gap: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-search input {
+      flex: 1; max-width: 380px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border-mid);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .hero-search input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .hero-search input:focus {
+      outline: none;
+      background: rgba(255,255,255,0.12);
+      border-color: var(--border-bright);
+      box-shadow: 0 0 0 3px rgba(245,200,66,0.1);
+    }
+
+    .hero-search button {
+      padding: 14px 24px;
+      background: linear-gradient(135deg, var(--yellow-300) 0%, var(--yellow-400) 100%);
+      border: none;
+      border-radius: 6px;
+      color: var(--navy-900);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .hero-search button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,200,66,0.3);
+    }
+
+    .hero-search button:active {
+      transform: translateY(0);
+    }
+
+    /* CTA buttons */
+    .hero-cta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s var(--ease-smooth);
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--yellow-300) 0%, var(--yellow-400) 100%);
+      color: var(--navy-900);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(245,200,66,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border-mid);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--border-bright);
+    }
+
+    /* Hero image placeholder */
+    .hero-graphic {
+      position: relative;
+      height: 400px;
+      background: linear-gradient(135deg, rgba(220,55,55,0.15), rgba(245,200,66,0.08));
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      font-size: 5rem;
+    }
+
+    /* ── FEATURED SECTION ──────────────────────────────── */
+    .featured {
+      padding: 5rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .featured-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .featured-header h2 {
+      font-family: 'Bebas Neue';
+      font-size: 2.8rem;
+      margin: 0 0 0.5rem;
+      background: linear-gradient(135deg, var(--yellow-300), var(--yellow-400));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .featured-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    #featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s var(--ease-smooth);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-bright);
+      box-shadow: 0 16px 48px rgba(245,200,66,0.15);
+    }
+
+    .product-card-img {
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+
+    .emoji-icon {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pc-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: linear-gradient(135deg, var(--yellow-300), var(--yellow-400));
+      color: var(--navy-900);
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .product-card-body {
+      padding: 1.5rem;
+    }
+
+    .product-card-game {
+      color: var(--yellow-300);
+      font-family: 'Share Tech Mono';
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-card-name {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .pc-rating {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pc-price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--yellow-300);
+    }
+
+    .pc-old {
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-size: 0.9rem;
+    }
+
+    .pc-cart-btn {
+      background: var(--yellow-300);
+      border: none;
+      color: var(--navy-900);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: auto;
+    }
+
+    .pc-cart-btn:hover {
+      background: var(--yellow-400);
+      transform: scale(1.05);
+    }
+
+    .pc-cart-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ── CART TOAST ────────────────────────────────────── */
+    #cartToast {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      background: rgba(10, 18, 45, 0.95);
+      border: 1px solid var(--border-bright);
+      color: var(--text-primary);
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s var(--ease-smooth);
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+
+    #cartToast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ── NEWSLETTER SECTION ────────────────────────────── */
+    .newsletter {
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, rgba(220,55,55,0.08), rgba(245,200,66,0.05));
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin: 4rem 0;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-content h3 {
+      font-family: 'Bebas Neue';
+      font-size: 2.2rem;
+      margin: 0 0 1rem;
+    }
+
+    .newsletter-content p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--border-mid);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .newsletter-form button {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--yellow-300), var(--yellow-400));
+      border: none;
+      border-radius: 6px;
+      color: var(--navy-900);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(245,200,66,0.3);
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: rgba(4, 8, 24, 0.5);
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h4 {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin: 0 0 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--yellow-300);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-search {
+        flex-direction: column;
+      }
+
+      .hero-search input {
+        max-width: 100%;
+      }
+
+      .featured-header h2 {
+        font-size: 1.8rem;
+      }
+
+      #featured-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- HERO SECTION                                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">
+          🎵 PLAYBEAT DIGITAL — PAKISTAN'S FASTEST
+        </div>
+        
+        <h1>Digital Marketplace at PKR Prices</h1>
+        
+        <p>
+          Buy games, gift cards, software, AI tools, premium subscriptions & mobile top-ups at instant Pakistani rates. Secure payment via JazzCash, Stripe, Alfalah & Meezan.
+        </p>
+
+        <div class="hero-search">
+          <input type="text" id="heroSearch" placeholder="Search games, software, subscriptions..." />
+          <button onclick="doSearch()">Search</button>
+        </div>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="joinPlayBeat()">Create Account</button>
+          <button class="btn btn-secondary" onclick="signIn()">Sign In</button>
+        </div>
+      </div>
+
+      <div class="hero-graphic">
+        🎮
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- FEATURED PRODUCTS SECTION                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="featured">
+    <div class="featured-header">
+      <h2>Featured Products</h2>
+      <p>Trending games, software, and more handpicked for you</p>
+    </div>
+    <div id="featured-grid"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- NEWSLETTER SECTION                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <h3>Get The Best Deals</h3>
+      <p>Subscribe for exclusive offers, flash sales & early access to new products</p>
+      <div class="newsletter-form">
+        <input type="email" id="nlEmail" placeholder="Enter your email…" />
+        <button onclick="subscribe()">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER SECTION                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>🎵 PlayBeat Digital</h4>
+        <p>Pakistan's #1 digital marketplace for games, software & subscriptions.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#support">Support</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#games">Games & Top-Ups</a></li>
+          <li><a href="#software">Software & Keys</a></li>
+          <li><a href="#subscriptions">Subscriptions</a></li>
+          <li><a href="#ai">AI Tools</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Payment Methods</h4>
+        <ul>
+          <li>✓ JazzCash Mobile</li>
+          <li>✓ Stripe Card</li>
+          <li>✓ Bank Transfer</li>
+          <li>✓ Alfalah EasyPaisa</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="yr"></span> PlayBeat Digital. All rights reserved.</p>
+      <p><small>Made with 🎵 in Pakistan | Secure & Fast Delivery</small></p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- CART TOAST NOTIFICATION                                            -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <div id="cartToast"></div>
+
+  <script>
+    // ── API CONFIGURATION ──────────────────────────────────────────
+    const API_URL = '/api'; // Proxied through Express server
+    
+    // ── UTILITY FUNCTIONS ──────────────────────────────────────────
+    
+    /**
+     * Make API request with error handling
+     */
+    async function apiCall(endpoint, options = {}) {
+      try {
+        const url = `${API_URL}${endpoint}`;
+        const response = await fetch(url, {
+          method: options.method || 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+          },
+          body: options.body ? JSON.stringify(options.body) : undefined
+        });
+
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        console.error('API Call Failed:', error);
+        showToast(`❌ Error: ${error.message}`);
+        return null;
+      }
+    }
+
+    /**
+     * Show toast notification
+     */
+    function showToast(msg) {
+      const t = document.getElementById('cartToast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ── FEATURED PRODUCTS ──────────────────────────────────────────
+    
+    const featured = [
+      { name:"Netflix Premium 4K — 1 Month",     cat:"Streaming",  price:"PKR 699",    old:"PKR 899",   badge:"HOT",    emoji:"📺", grade:"★★★★★ (8.9k)", href:"subscriptions.html" },
+      { name:"ChatGPT Plus GPT-4o — 1 Month",    cat:"AI Tools",   price:"PKR 5,999",  old:"",          badge:"AI HOT", emoji:"💬", grade:"★★★★★ (5.6k)", href:"ai-tools.html" },
+      { name:"PUBG Mobile UC — 1800 UC",          cat:"Top Up",     price:"PKR 1,799",  old:"PKR 1,949", badge:"POPULAR",emoji:"🎯", grade:"★★★★★ (9.4k)", href:"top-up.html" },
+      { name:"MS Office 365 Personal — 1yr",      cat:"Software",   price:"PKR 2,499",  old:"PKR 4,999", badge:"SALE",   emoji:"📄", grade:"★★★★★ (3.2k)", href:"software.html" },
+      { name:"Steam Wallet — $10 USD Global",     cat:"Gift Card",  price:"PKR 2,999",  old:"",          badge:"",       emoji:"♻️", grade:"★★★★★ (4.2k)", href:"gift-cards.html" },
+      { name:"Free Fire Diamonds — 1000",         cat:"Top Up",     price:"PKR 1,499",  old:"",          badge:"",       emoji:"🔥", grade:"★★★★★ (11k)",  href:"top-up.html" },
+      { name:"Valorant Elderflame Bundle",        cat:"Games",      price:"PKR 7,999",  old:"PKR 11,499",badge:"⚡FLASH", emoji:"⚡", grade:"★★★★★ (1.2k)", href:"games.html" },
+      { name:"Spotify Premium — 3 Months",        cat:"Music",      price:"PKR 499",    old:"PKR 597",   badge:"SAVE 16%",emoji:"🎵",grade:"★★★★★ (5.6k)", href:"subscriptions.html" },
+      { name:"Windows 11 Pro — Digital Key",      cat:"Software",   price:"PKR 3,999",  old:"PKR 5,999", badge:"NEW LOW",emoji:"🪟", grade:"★★★★½ (2.4k)", href:"software.html" },
+      { name:"Xbox Game Pass Ultimate — 1M",      cat:"Subscription",price:"PKR 1,999", old:"PKR 2,499", badge:"HOT",   emoji:"🟩", grade:"★★★★★ (2.4k)", href:"subscriptions.html" },
+      { name:"Midjourney Basic — 1 Month",        cat:"AI Tools",   price:"PKR 2,999",  old:"",          badge:"AI",    emoji:"🖼️", grade:"★★★★★ (2.1k)", href:"ai-tools.html" },
+      { name:"Mobile Legends — 86 Diamonds",      cat:"Top Up",     price:"PKR 349",    old:"",          badge:"",      emoji:"⚔️", grade:"★★★★★ (18k)",  href:"top-up.html" },
+    ];
+
+    function renderFeatured() {
+      const grid = document.getElementById('featured-grid');
+      grid.innerHTML = featured.map(p => {
+        const hue = Math.floor(Math.random() * 360);
+        return `
+        <a href="${p.href}" class="product-card" onclick="addToCart(this,event)">
+          <div class="product-card-img" style="background:linear-gradient(135deg,hsl(${hue},40%,10%) 0%,hsl(${(hue+40)%360},50%,18%) 100%);">
+            <span class="emoji-icon">${p.emoji}</span>
+            ${p.badge ? `<div class="pc-badge">${p.badge}</div>` : ''}
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-game">${p.cat}</div>
+            <div class="product-card-name">${p.name}</div>
+            <div class="pc-rating">${p.grade}</div>
+            <div class="product-card-meta" style="margin-top:8px;">
+              <span class="pc-price">${p.price}</span>
+              ${p.old ? `<span class="pc-old">${p.old}</span>` : ''}
+              <button class="pc-cart-btn" onclick="addToCart(this,event)">Add</button>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    }
+    
+    renderFeatured();
+
+    // ── SHOPPING CART ──────────────────────────────────────────────
+    
+    let cartCount = parseInt(localStorage.getItem('pb_cart_count') || '0');
+    
+    async function addToCart(el, e) {
+      e && e.preventDefault();
+      const card = el.closest('.product-card') || el;
+      const name = card.querySelector('.product-card-name')?.textContent || 'Item';
+      const price = card.querySelector('.pc-price')?.textContent || '';
+      
+      cartCount++;
+      localStorage.setItem('pb_cart_count', cartCount);
+      
+      // Try to sync with backend (optional - continues if offline)
+      await apiCall('/cart/add', {
+        method: 'POST',
+        body: { name, price, count: cartCount }
+      }).catch(() => null);
+      
+      showToast(`✅ Added: ${name} — ${price}`);
+    }
+
+    // ── SEARCH FUNCTIONALITY ───────────────────────────────────────
+    
+    function doSearch() {
+      const v = document.getElementById('heroSearch').value.trim();
+      if (v) {
+        showToast(`🔍 Searching for "${v}"…`);
+        // TODO: Implement product search via API
+        // apiCall(`/products/search?q=${encodeURIComponent(v)}`)
+      }
+    }
+    
+    document.getElementById('heroSearch').addEventListener('keypress', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    // ── NEWSLETTER SUBSCRIPTION ────────────────────────────────────
+    
+    async function subscribe() {
+      const e = document.getElementById('nlEmail')?.value || document.getElementById('footerEmail')?.value;
+      
+      if (!e || !e.includes('@')) {
+        showToast('⚠ Please enter a valid email address.');
+        return;
+      }
+
+      showToast('📧 Subscribing...');
+      
+      const result = await apiCall('/newsletter/subscribe', {
+        method: 'POST',
+        body: { email: e }
+      });
+
+      if (result) {
+        document.getElementById('nlEmail').value = '';
+        showToast('✅ Subscribed! Watch your inbox for deals.');
+      }
+    }
+
+    // ── USER AUTHENTICATION ────────────────────────────────────────
+    
+    async function signIn() {
+      const email = prompt('Enter your email to sign in:');
+      if (!email) return;
+
+      showToast('🔑 Signing in...');
+      
+      const result = await apiCall('/auth/login', {
+        method: 'POST',
+        body: { email }
+      });
+
+      if (result) {
+        localStorage.setItem('pb_user_token', result.token || '');
+        localStorage.setItem('pb_user_email', email);
+        showToast(`✔ Signed in as ${email}`);
+      }
+    }
+
+    async function joinPlayBeat() {
+      const email = prompt('Enter your email for PlayBeat:');
+      if (!email) return;
+
+      showToast('✦ Creating your PlayBeat account…');
+      
+      const result = await apiCall('/auth/register', {
+        method: 'POST',
+        body: { email }
+      });
+
+      if (result) {
+        localStorage.setItem('pb_user_token', result.token || '');
+        localStorage.setItem('pb_user_email', email);
+        showToast('✔ Account created! Welcome to PlayBeat.');
+      }
+    }
+
+    // ── WISHLIST ───────────────────────────────────────────────────
+    
+    function wishlist() {
+      const token = localStorage.getItem('pb_user_token');
+      if (!token) {
+        showToast('❤️ Sign in to save to wishlist');
+        signIn();
+      } else {
+        showToast('❤️ Added to wishlist!');
+      }
+    }
+
+    // ── PAGE INITIALIZATION ────────────────────────────────────────
+    
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Check backend health on page load
+    window.addEventListener('load', async () => {
+      const health = await apiCall('/health');
+      if (health?.status === 'healthy') {
+        console.log('✅ Backend connected');
+      } else {
+        console.warn('⚠️ Backend connection issue');
+      }
+    });
+  </script>
+</body>
+</html>
