@@ -1,0 +1,51 @@
+name: Build Three PlayBeat Android APKs
+on:
+  push:
+    branches:
+      - playbeat-three-admin-android-build
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Android source
+        uses: actions/checkout@v4
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Add PlayBeat official avatar photos
+        run: |
+          set -euo pipefail
+          cd android-three-admin/app/src/main
+          mkdir -p res/drawable-nodpi
+          curl --fail --location --retry 2 --silent --show-error 'https://ucc2c3833b4335428bd246222868.dl.dropboxusercontent.com/cd/0/get/DKQXWHCMUH1c2L0iWDUsPeBAbZu9bEqI2dlCoGDN9aFH7crUMEw4BEbcKFJocbKp88JYvWwHb-PJGysQ5vEQnYI9FY_7IfHIxGOgLuLVEDsff_uMb3P7niyeh9RwxTveffJlfA8BtFTBoXQJy_SbFXNYbgTh958PYcGLxIo203VIlQ/file?c_luid=20043781' -o res/drawable-nodpi/qazi.png
+          curl --fail --location --retry 2 --silent --show-error 'https://uc2216a5ef7354c1d79571a37cce.dl.dropboxusercontent.com/cd/0/get/DKQ5rtWujoBHQuyrrWIr1rZeyy31QO3zJ5YGd2cNQZOROUUFHGXG_b6RmCLK2Vol0IglPPQtFNpIo-P5QZnoBXLo7ZfdvwcKfaYD7rRu8jB8_f9AhWNtwfdJOPixD88vvBfaDBs7vxTlqwkJTokAVff2lN5d5nHLgK54PocLG-H1KA/file?c_luid=20043781' -o res/drawable-nodpi/creed.png
+          curl --fail --location --retry 2 --silent --show-error 'https://uc3930f4b8e132f3611533c8ac7b.dl.dropboxusercontent.com/cd/0/get/DKTrT0O4sjbZ3r3dMo6NLW02iAszi0XV2q9QFv71M1JBa85Z7Eqfu5zjNr4RGe2KD1--FjlPgew5kaklAsgPEN5o9TBkxv40THT60vxw8nmRin0YrVJuS7MKrEsID1YPw7hrV2OFEOTKqJ7jb1zFlE73vTvBGt5JWndsG8ura4m_PQ/file?c_luid=20043781' -o res/drawable-nodpi/mahbuba.jpg
+          test -s res/drawable-nodpi/qazi.png && test -s res/drawable-nodpi/creed.png && test -s res/drawable-nodpi/mahbuba.jpg
+      - name: Build three installable APKs
+        run: gradle -p android-three-admin :app:assembleDigitalDebug :app:assembleArenaDebug :app:assembleGatefitDebug --no-daemon --stacktrace
+      - name: Collect exactly three APKs
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          cp android-three-admin/app/build/outputs/apk/digital/debug/app-digital-debug.apk dist/PlayBeat-Digital-Admin.apk
+          cp android-three-admin/app/build/outputs/apk/arena/debug/app-arena-debug.apk dist/PlayBeat-Arena-Admin.apk
+          cp android-three-admin/app/build/outputs/apk/gatefit/debug/app-gatefit-debug.apk dist/PlayBeat-Gatefit-Admin.apk
+          file dist/*.apk
+      - name: Save Android APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: PlayBeat-Three-Android-APKs
+          path: dist/*.apk
+          if-no-files-found: error
